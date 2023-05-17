@@ -12,6 +12,8 @@ namespace ariel {
     public:
         Team2();
 
+        Team2(Character *leader);
+
         Team2(Character &leader);
 
         Team2(Team2 const &_other);

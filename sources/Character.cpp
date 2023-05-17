@@ -37,8 +37,8 @@ namespace ariel {
 
     bool Character::isAlive() { return this->_lives > 0; }
 
-    double Character::distance(Character &_other) {
-        return this->getLocation().distance(_other.getLocation());
+    double Character::distance(Character *_other) {
+        return this->getLocation().distance(_other->getLocation());
     }
 
     void Character::hit(int n) {
