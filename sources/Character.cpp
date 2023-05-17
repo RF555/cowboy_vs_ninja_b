@@ -67,20 +67,12 @@ namespace ariel {
         return _other.toPrint(output);
     }
 
-    void Character::setLocation(const Point &location) {
-        _location = location;
-    }
+    void Character::setLocation(const Point &location) { _location = location; }
 
-    void Character::setLives(int lives) {
-        _lives = lives;
-    }
+    void Character::setLives(int lives) { _lives = lives; }
 
-    void Character::setName(const string &name) {
-        _name = name;
-    }
+    void Character::setName(const string &name) { _name = name; }
 
-    bool Character::operator==(Character &_other) {
-        return &(*this) == &_other;
-    }
+    bool Character::operator==(Character &_other) { return &(*this) == &_other; }
 
 }

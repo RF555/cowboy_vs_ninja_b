@@ -26,7 +26,9 @@ namespace ariel {
         }
     }
 
-    void Cowboy::shoot(Character *enemy) {}
+    void Cowboy::shoot(Character *enemy) {
+
+    }
 
     bool Cowboy::hasboolets() { return false; }
 

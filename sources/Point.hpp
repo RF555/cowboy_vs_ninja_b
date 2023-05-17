@@ -34,7 +34,7 @@ namespace ariel {
          * @param _point2 A point.
          * @return Distance between the 2 points.
          */
-        double distance(Point &_point2);
+        double distance(const Point& _point2);
 
         /**
          * @return A string of the x and y coordinates inside of parenthesis.
@@ -49,7 +49,7 @@ namespace ariel {
          * @param len Distance from the source point.
          * @return A point between 'src' and 'dest'.
          */
-        friend Point moveTowards(Point &src, Point &dest, double len);
+        static Point moveTowards(Point &src, Point &dest, double len);
 
         Point &operator=(Point const &_other);
 
