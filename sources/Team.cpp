@@ -4,7 +4,7 @@ namespace ariel {
 
     Team::Team() {}
 
-    Team::Team(Character *leader) {}
+    Team::Team(Character *leader) : _leader(leader), size(1) {}
 
     Team::Team(Character &leader) {}
 
