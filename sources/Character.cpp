@@ -5,17 +5,20 @@ namespace ariel {
     Character::Character() :
             _location(Point()),
             _lives(0),
-            _name("None") {}
+            _name("None"),
+            my_type(CHARACTER) {}
 
     Character::Character(int lives) :
             _location(Point()),
             _lives(lives),
-            _name("None") {}
+            _name("None"),
+            my_type(CHARACTER) {}
 
-    Character::Character(const string &name, Point point, int lives) :
+    Character::Character(const string &name, Point point, int lives, CharType _type) :
             _location(point),
             _lives(lives),
-            _name(name) {}
+            _name(name),
+            my_type(_type) {}
 
     Character::Character(const Character &_other) :
             _location(_other._location),
@@ -74,5 +77,13 @@ namespace ariel {
     void Character::setName(const string &name) { _name = name; }
 
     bool Character::operator==(Character &_other) { return &(*this) == &_other; }
+
+    void Character::setMyType(CharType myType) {
+        my_type = myType;
+    }
+
+    CharType Character::getMyType() const {
+        return my_type;
+    }
 
 }

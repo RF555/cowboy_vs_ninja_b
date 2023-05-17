@@ -7,7 +7,7 @@ namespace ariel {
             n_bullets(6) {}
 
     Cowboy::Cowboy(const string &name, Point point) :
-            Character(name, point, 110),
+            Character(name, point, 110, COWBOY),
             n_bullets(6) {}
 
     Cowboy::Cowboy(const Cowboy &_other) :
@@ -27,12 +27,21 @@ namespace ariel {
     }
 
     void Cowboy::shoot(Character *enemy) {
-
+        if (this->isAlive()) {
+            if (this->hasboolets()) {
+                enemy->hit(10);
+                --this->n_bullets;
+            } else {
+                this->reload();
+            }
+        }
     }
 
-    bool Cowboy::hasboolets() { return false; }
+    bool Cowboy::hasboolets() { return this->n_bullets > 0; }
 
-    void Cowboy::reload() { if (this->n_bullets == 0) this->n_bullets = 6; }
+    void Cowboy::reload() {
+        this->n_bullets = 6;
+    }
 
     int Cowboy::getNBullets() const { return n_bullets; }
 

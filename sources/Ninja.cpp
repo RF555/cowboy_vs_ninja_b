@@ -11,7 +11,7 @@ namespace ariel {
             _speed(speed) {}
 
     Ninja::Ninja(const string &name, Point point, int lives, int speed) :
-            Character(name, point, lives),
+            Character(name, point, lives, NINJA),
             _speed(speed) {}
 
     Ninja::Ninja(const Ninja &_other) : Character(_other), _speed(_other._speed) {}
@@ -41,5 +41,20 @@ namespace ariel {
     }
 
     void Ninja::setSpeed(int speed) { _speed = speed; }
+
+    void Ninja::slash(Character *enemy) {
+        if (this->isAlive()) {
+            if (this->distance(enemy) <= 1) {
+                enemy->hit(40);
+            } else {
+                this->move(enemy);
+            }
+        }
+    }
+
+    void Ninja::move(Character *enemy) {
+        this->getLocation().movePoint(
+                this->getLocation().moveTowards(getLocation(), enemy->getLocation(), this->_speed));
+    }
 
 }

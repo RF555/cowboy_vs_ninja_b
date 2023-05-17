@@ -9,20 +9,28 @@
 
 using namespace std;
 namespace ariel {
+
+    enum CharType {
+        CHARACTER = 0, COWBOY = 1, NINJA = 2
+    };
+
+
     class Character {
     private:
 
         Point _location;
         int _lives;
         string _name;
+        CharType my_type;
 
     protected:
-
         void setLocation(const Point &location);
 
         void setLives(int lives);
 
         void setName(const string &name);
+
+        void setMyType(CharType myType);
 
     public:
 
@@ -30,7 +38,7 @@ namespace ariel {
 
         explicit Character(int lives);
 
-        Character(const string &name, Point point, int lives);
+        Character(const string &name, Point point, int lives, CharType _type);
 
         Character(Character const &_other);
 
@@ -46,7 +54,7 @@ namespace ariel {
 
         Character &operator=(Character &&_other) noexcept;
 
-        bool operator==(Character&_other);
+        bool operator==(Character &_other);
 
         // I/O operation:
         friend std::ostream &operator<<(ostream &output, Character &_other);
@@ -73,6 +81,7 @@ namespace ariel {
          */
         virtual string getName();
 
+        CharType getMyType() const;
 
         /**
          *

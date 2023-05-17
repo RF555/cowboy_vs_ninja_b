@@ -34,7 +34,7 @@ namespace ariel {
          * @param _point2 A point.
          * @return Distance between the 2 points.
          */
-        double distance(const Point& _point2);
+        double distance(const Point &_point2);
 
         /**
          * @return A string of the x and y coordinates inside of parenthesis.
@@ -53,11 +53,13 @@ namespace ariel {
 
         Point &operator=(Point const &_other);
 
-        Point &operator=(Point &&_other) noexcept ;
+        Point &operator=(Point &&_other) noexcept;
 
         explicit operator std::string();
 
         friend std::ostream &operator<<(ostream &output, const Point &_point);
+
+        void movePoint(const Point& _other);
 
     };
 

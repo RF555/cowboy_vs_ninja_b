@@ -19,7 +19,7 @@ namespace ariel {
 
     Point::~Point() {}
 
-    double Point::distance(const Point& _point2) {
+    double Point::distance(const Point &_point2) {
         return sqrt((this->getX() - _point2.getX()) * (this->getX() - _point2.getX()) +
                     (this->getY() - _point2.getY()) * (this->getY() - _point2.getY()));
     }
@@ -68,6 +68,11 @@ namespace ariel {
 
     std::ostream &operator<<(ostream &output, const Point &_point) {
         return output << "(" << _point.x_coordinate << "," << _point.y_coordinate << ")";
+    }
+
+    void Point::movePoint(const Point& _other) {
+        this->x_coordinate = _other.getX();
+        this->y_coordinate = _other.getY();
     }
 
 
