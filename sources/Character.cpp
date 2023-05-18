@@ -6,24 +6,28 @@ namespace ariel {
             _location(Point()),
             _lives(0),
             _name("None"),
-            my_type(CHARACTER) {}
+            my_type(CHARACTER),
+            team_member(false) {}
 
     Character::Character(int lives) :
             _location(Point()),
             _lives(lives),
             _name("None"),
-            my_type(CHARACTER) {}
+            my_type(CHARACTER),
+            team_member(false) {}
 
     Character::Character(const string &name, Point point, int lives, CharType _type) :
             _location(point),
             _lives(lives),
             _name(name),
-            my_type(_type) {}
+            my_type(_type),
+            team_member(false) {}
 
     Character::Character(const Character &_other) :
             _location(_other._location),
             _lives(_other._lives),
-            _name(_other._name) {}
+            _name(_other._name),
+            team_member(_other.){}
 
     Character::Character(Character &&_other) noexcept {}
 
@@ -84,6 +88,14 @@ namespace ariel {
 
     CharType Character::getMyType() const {
         return my_type;
+    }
+
+    bool Character::isTeamMember() const {
+        return team_member;
+    }
+
+    void Character::setTeamMember(bool teamMember) {
+        team_member = teamMember;
     }
 
 }

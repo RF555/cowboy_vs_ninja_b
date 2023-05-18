@@ -21,16 +21,13 @@ namespace ariel {
         int size;
         Character *_leader;
         vector<Character *> members;
-
-//        vector<Cowboy> _cowboys;
-//        vector<Ninja> _ninjas;
+        vector<Cowboy *> _cowboys;
+        vector<Ninja *> _ninjas;
 
     public:
         Team();
 
-        Team(Character *leader);
-
-        Team(Character &leader);
+        explicit Team(Character *leader);
 
         Team(Team const &_other);
 
@@ -44,9 +41,9 @@ namespace ariel {
 
         /**
          * Adds the Character to the team.
-         * @param member Reference to a Character.
+         * @param new_member Reference to a Character.
          */
-        virtual void add(Character *member);
+        virtual void add(Character *new_member);
 
         /**
          *

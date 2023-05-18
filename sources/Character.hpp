@@ -22,6 +22,7 @@ namespace ariel {
         int _lives;
         string _name;
         CharType my_type;
+        bool team_member;
 
     protected:
         void setLocation(const Point &location);
@@ -96,6 +97,10 @@ namespace ariel {
         virtual explicit operator std::string();
 
         virtual ostream &toPrint(ostream &output) = 0;
+
+        bool isTeamMember() const;
+
+        void setTeamMember(bool teamMember);
 
     };
 
