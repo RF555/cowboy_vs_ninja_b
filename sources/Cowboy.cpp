@@ -27,6 +27,9 @@ namespace ariel {
     }
 
     void Cowboy::shoot(Character *enemy) {
+        if (this == enemy) {
+            throw std::runtime_error("RUNTIME ERROR: Cowboy can not attack itself!\n");
+        }
         if (this->isAlive() && enemy->isAlive()) {
             if (this->hasboolets()) {
                 enemy->hit(10);
@@ -42,6 +45,10 @@ namespace ariel {
     bool Cowboy::hasboolets() { return this->n_bullets > 0; }
 
     void Cowboy::reload() {
+        if (!this->isAlive()) {
+            throw std::runtime_error("RUNTIME ERROR: Dead Cowboy can not reload!\n");
+
+        }
         this->n_bullets = 6;
     }
 

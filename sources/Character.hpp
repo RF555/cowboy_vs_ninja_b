@@ -77,9 +77,10 @@ namespace ariel {
 
         /**
          * @brief Reduces the character's lives by the number of hits.
-         * @param n Number of hits.
+         * @param hit_points Number of hits.
+         * @throws std::invalid_argument If hit_points < 0 (is negative).
          */
-        virtual void hit(int n);
+        virtual void hit(int hit_points);
 
         /**
          * @return The name of the character.

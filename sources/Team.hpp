@@ -35,6 +35,8 @@ namespace ariel {
          */
         vector<Ninja *> _ninjas;
 
+    protected:
+
         /**
          * @brief Choose leader to be the closest member to the old (dead) leader.
          */
@@ -46,6 +48,13 @@ namespace ariel {
          * @return Pointer to the chosen victim.
          */
         Character *choose_victim(Team *enemy_team);
+
+        /**
+         * @brief Send an attacker on the victim.
+         * @param attacker Character from our Team.
+         * @param victim Character from enemy Team.
+         */
+        void send_attack(Character *attacker, Character *victim);
 
     public:
 
@@ -94,6 +103,8 @@ namespace ariel {
          *          5. Attack ends when:\n
          *              * There are no living members in our group.\n
          *              * There are no living members in the enemy group.
+         * @throws std::runtime_error If enemy_team is nullptr.
+         * @throws std::runtime_error If enemy_team has no living members.
          */
         virtual void attack(Team *enemy_team);
 

@@ -40,7 +40,9 @@ namespace ariel {
          *          subtract 10 lives from the enemy.\n
          *          subtract 1 bullet from the cowboy.
          * @details Else do nothing.
-         * @throws std::runtime_error If this Cowboy is dead OR the enemy is dead.
+         * @throws std::runtime_error If this Cowboy is dead.
+         * @throws std::runtime_error If the enemy is dead.
+         * @throws std::runtime_error If the enemy is this Cowboy.
          */
         virtual void shoot(Character *enemy);
 
@@ -51,6 +53,7 @@ namespace ariel {
 
         /**
          * @brief Reloads 6 bullets.
+         * @throws std::runtime_error If this Cowboy is dead.
          */
         virtual void reload();
 

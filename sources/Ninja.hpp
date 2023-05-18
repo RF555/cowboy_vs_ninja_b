@@ -42,6 +42,7 @@ namespace ariel {
         /**
          * @brief Moves the ninja towards the enemy the distance equivalent to it's speed.
          * @param enemy Reference of an enemy to move towards to.
+         * @throws std::runtime_error If this Ninja is dead.
          */
         virtual void move(Character *enemy);
 
@@ -51,7 +52,9 @@ namespace ariel {
          * @details If the ninja is alive AND is less then (or equal) 1m from the enemy:\n
          *          subtract 40 lives from the enemy.
          * @details Else do nothing.
-         * @throws std::runtime_error If this Ninja is dead OR the enemy is dead.
+         * @throws std::runtime_error If this Ninja is dead.
+         * @throws std::runtime_error If the enemy is dead.
+         * @throws std::runtime_error If the enemy is this Ninja.
          */
         virtual void slash(Character *enemy);
 
