@@ -4,7 +4,7 @@
 #include "Ninja.hpp"
 
 namespace ariel {
-    class YoungNinja : public Ninja {
+    class YoungNinja : protected Ninja {
     public:
 
         YoungNinja();
