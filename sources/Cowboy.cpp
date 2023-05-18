@@ -27,13 +27,15 @@ namespace ariel {
     }
 
     void Cowboy::shoot(Character *enemy) {
-        if (this->isAlive()) {
+        if (this->isAlive() && enemy->isAlive()) {
             if (this->hasboolets()) {
                 enemy->hit(10);
                 --this->n_bullets;
-            } else {
-                this->reload();
             }
+        } else if (this->isAlive()) {
+            throw std::runtime_error("RUNTIME ERROR: Dead Cowboy can not attack!\n");
+        } else {
+            throw std::runtime_error("RUNTIME ERROR: Cowboy can not attack a dead Character!\n");
         }
     }
 
@@ -54,4 +56,13 @@ namespace ariel {
         this->n_bullets = _other.getNBullets();
         return *this;
     }
+
+    void Cowboy::attack(Character *enemy) {
+        if (this->hasboolets()) {
+            shoot(enemy);
+        } else {
+            reload();
+        }
+    }
+
 }

@@ -43,18 +43,28 @@ namespace ariel {
     void Ninja::setSpeed(int speed) { _speed = speed; }
 
     void Ninja::slash(Character *enemy) {
-        if (this->isAlive()) {
+        if (this->isAlive() && enemy->isAlive()) {
             if (this->distance(enemy) <= 1) {
                 enemy->hit(40);
-            } else {
-                this->move(enemy);
             }
+        } else if (this->isAlive()) {
+            throw std::runtime_error("RUNTIME ERROR: Dead Ninja can not attack!\n");
+        } else {
+            throw std::runtime_error("RUNTIME ERROR: Cowboy can not attack a dead Character!\n");
         }
     }
 
     void Ninja::move(Character *enemy) {
         this->getLocation().movePoint(
                 this->getLocation().moveTowards(getLocation(), enemy->getLocation(), this->_speed));
+    }
+
+    void Ninja::attack(Character *enemy) {
+        if (this->distance(enemy) <= 1) {
+            slash(enemy);
+        } else {
+            this->move(enemy);
+        }
     }
 
 }

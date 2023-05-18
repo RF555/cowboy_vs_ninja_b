@@ -16,7 +16,7 @@ namespace ariel {
             my_type(CHARACTER),
             team_member(false) {}
 
-    Character::Character(const string &name, Point point, int lives, CharType _type) :
+    Character::Character(const string &name, Point point, int lives, CharacterType _type) :
             _location(point),
             _lives(lives),
             _name(name),
@@ -82,11 +82,11 @@ namespace ariel {
 
     bool Character::operator==(Character &_other) { return &(*this) == &_other; }
 
-    void Character::setMyType(CharType myType) {
+    void Character::setMyType(CharacterType myType) {
         my_type = myType;
     }
 
-    CharType Character::getMyType() const {
+    CharacterType Character::getMyType() const {
         return my_type;
     }
 

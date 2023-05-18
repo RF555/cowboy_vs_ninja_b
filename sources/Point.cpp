@@ -28,6 +28,9 @@ namespace ariel {
 
 
     Point Point::moveTowards(Point &src, Point &dest, double len) {
+        if (len < 0) {
+            throw std::invalid_argument("INVALID ARGUMENT: Distance (length) must be positive!");
+        }
         double _dist = src.distance(dest);
         if (_dist <= len) {
             return Point(dest);
@@ -70,7 +73,7 @@ namespace ariel {
         return output << "(" << _point.x_coordinate << "," << _point.y_coordinate << ")";
     }
 
-    void Point::movePoint(const Point& _other) {
+    void Point::movePoint(const Point &_other) {
         this->x_coordinate = _other.getX();
         this->y_coordinate = _other.getY();
     }

@@ -13,7 +13,10 @@ namespace ariel {
         Cowboy();
 
         /**
-         * Starts with 6 bullets and 110 lives.
+         * @brief Main Cowboy constructor.
+         * @param name String representing the name of the Character.
+         * @param point Point as the location of the Character.
+         * @details Cowboy is constructed with 6 bullets and 110 lives.
          */
         Cowboy(const string &name, Point point);
 
@@ -31,10 +34,13 @@ namespace ariel {
 
 
         /**
-         * Shoot the enemy - IF the cowboy is alive AND has bullets left:
-         *                      subtract 10 lives from the enemy.
-         *                      subtract 1 bullet from the cowboy.
+         * @brief Shoot the enemy.
          * @param enemy Reference to an enemy.
+         * @details If the cowboy is alive AND has bullets left:\n
+         *          subtract 10 lives from the enemy.\n
+         *          subtract 1 bullet from the cowboy.
+         * @details Else do nothing.
+         * @throws std::runtime_error If this Cowboy is dead OR the enemy is dead.
          */
         virtual void shoot(Character *enemy);
 
@@ -44,12 +50,13 @@ namespace ariel {
         virtual bool hasboolets();
 
         /**
-         * Reloads 6 bullets.
+         * @brief Reloads 6 bullets.
          */
         virtual void reload();
 
         ostream &toPrint(ostream &output) override;
 
+        void attack(Character *enemy) override;
     };
 
 }

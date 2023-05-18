@@ -16,6 +16,7 @@ namespace ariel {
         virtual ostream &toPrint(ostream &output);
 
     public:
+
         Point();
 
         Point(double _x_coordinate, double _y_coordinate);
@@ -43,11 +44,12 @@ namespace ariel {
         string print();
 
         /**
-         * Find the closest point to 'dest', that is not further then 'len' from 'src'.
+         * @brief Find the closest point to 'dest', that is not further then 'len' from 'src'.
          * @param src Source point.
          * @param dest Destination point.
          * @param len Distance from the source point.
          * @return A point between 'src' and 'dest'.
+         * @throws std::invalid_argument If len < 0 (is negative).
          */
         static Point moveTowards(Point &src, Point &dest, double len);
 
@@ -59,6 +61,10 @@ namespace ariel {
 
         friend std::ostream &operator<<(ostream &output, const Point &_point);
 
+        /**
+         * @brief Change this Point location.
+         * @param _other The destination Point.
+         */
         void movePoint(const Point& _other);
 
     };

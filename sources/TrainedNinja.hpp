@@ -7,10 +7,14 @@ namespace ariel {
     class TrainedNinja : public Ninja {
     public:
 
+
         TrainedNinja();
 
         /**
-         * Starts with speed 12 and 120 lives.
+         * @brief Main TrainedNinja constructor.
+         * @param name String representing the name of the Character.
+         * @param point Point as the location of the Character.
+         * @details TrainedNinja is constructed with 12 bullets and 120 lives.
          */
         TrainedNinja(const string &name, Point point);
 

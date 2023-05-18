@@ -10,7 +10,10 @@ namespace ariel {
         OldNinja();
 
         /**
-         * Starts with speed 8 and 150 lives.
+         * @brief Main OldNinja constructor.
+         * @param name String representing the name of the Character.
+         * @param point Point as the location of the Character.
+         * @details OldNinja is constructed with 8 bullets and 150 lives.
          */
         OldNinja(const string &name, Point point);
 
@@ -23,7 +26,6 @@ namespace ariel {
         OldNinja &operator=(const OldNinja &_other);
 
         OldNinja &operator=(OldNinja &&_other) noexcept;
-
 
         void slash(Character *enemy) override;
 

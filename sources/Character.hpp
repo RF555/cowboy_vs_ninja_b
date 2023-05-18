@@ -10,7 +10,7 @@
 using namespace std;
 namespace ariel {
 
-    enum CharType {
+    enum CharacterType {
         CHARACTER = 0, COWBOY = 1, NINJA = 2
     };
 
@@ -21,7 +21,7 @@ namespace ariel {
         Point _location;
         int _lives;
         string _name;
-        CharType my_type;
+        CharacterType my_type;
         bool team_member;
 
     protected:
@@ -31,7 +31,7 @@ namespace ariel {
 
         void setName(const string &name);
 
-        void setMyType(CharType myType);
+        void setMyType(CharacterType myType);
 
     public:
 
@@ -39,7 +39,14 @@ namespace ariel {
 
         explicit Character(int lives);
 
-        Character(const string &name, Point point, int lives, CharType _type);
+        /**
+         * @brief Main Character constructor.
+         * @param name String representing the name of the Character.
+         * @param point Point as the location of the Character.
+         * @param lives Number of lives (hit points) the Character hsa.
+         * @param _type enum CharacterType representing the Character's type (Character/Cowboy/Ninja).
+         */
+        Character(const string &name, Point point, int lives, CharacterType _type);
 
         Character(Character const &_other);
 
@@ -47,9 +54,6 @@ namespace ariel {
 
         virtual ~Character();
 
-        Point &getLocation();
-
-        int getLives() const;
 
         Character &operator=(const Character &_other);
 
@@ -72,7 +76,7 @@ namespace ariel {
         double distance(Character *_other);
 
         /**
-         * Reduces the character's lives by the number of hits.
+         * @brief Reduces the character's lives by the number of hits.
          * @param n Number of hits.
          */
         virtual void hit(int n);
@@ -82,14 +86,12 @@ namespace ariel {
          */
         virtual string getName();
 
-        CharType getMyType() const;
-
         /**
          *
-         * @return  A string of the name of the Character, number of lives left AND it's position (as a Point).
+         * @return  A string of the name of the Character, number of lives left AND it's position (as a Point).\n
          *          IF Character is dead ==> the Character's name will be in parenthesis and lives left won't be printed.
          *
-         *          Example (living Character): <name>, 100, (10,3)
+         * @details Example (living Character): <name>, 100, (10,3)\n
          *          Example (dead Character): (<name>), (10,3)
          */
         virtual string print();
@@ -102,6 +104,13 @@ namespace ariel {
 
         void setTeamMember(bool teamMember);
 
+        Point &getLocation();
+
+        int getLives() const;
+
+        CharacterType getMyType() const;
+
+        virtual void attack(Character *enemy) = 0;
     };
 
 }

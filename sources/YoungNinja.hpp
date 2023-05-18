@@ -6,10 +6,14 @@
 namespace ariel {
     class YoungNinja : public Ninja {
     public:
+
         YoungNinja();
 
         /**
-         * Starts with speed 14 and 100 lives.
+         * @brief Main YoungNinja constructor.
+         * @param name String representing the name of the Character.
+         * @param point Point as the location of the Character.
+         * @details YoungNinja is constructed with 14 bullets and 100 lives.
          */
         YoungNinja(const string &name, Point point);
 
