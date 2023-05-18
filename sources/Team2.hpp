@@ -16,7 +16,12 @@ namespace ariel {
 
         Team2();
 
-        Team2(Character *leader);
+        /**
+         * @param leader A pointer to the leader
+         * @throws std::runtime_error If the pointer is nullptr.
+         * @throws std::runtime_error If the leader already has a team.
+         */
+        explicit Team2(Character *leader);
 
         Team2(Character &leader);
 
@@ -37,6 +42,11 @@ namespace ariel {
          * @throws std::runtime_error If there are already 10 members in the team.
          */
         void add(Character *new_member) override;
+
+        /**
+         * @return A string of all members of the team.
+         */
+        string print() override;
     };
 
 }

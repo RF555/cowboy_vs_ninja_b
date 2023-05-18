@@ -114,7 +114,6 @@ namespace ariel {
         virtual int stillAlive();
 
         /**
-         * @brief
          * @return A string of all members of the team.
          */
         virtual string print();

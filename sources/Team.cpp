@@ -6,13 +6,14 @@ namespace ariel {
     Team::Team() : _leader(nullptr) {}
 
     Team::Team(Character *leader) :
-            _leader(leader),
-            size(1) {
+            _leader(leader) {
         if (leader->isTeamMember()) {
             throw std::runtime_error("RUNTIME ERROR: Already a team member!\n");
         } else if (this->_leader == nullptr) {
             throw std::runtime_error("RUNTIME ERROR: Leader is nullptr\n");
         } else {
+            this->add(leader);
+            this->size = 1;
             leader->setTeamMember(true);
         }
     }
@@ -55,10 +56,12 @@ namespace ariel {
         if (enemy_team == nullptr) {
             throw std::runtime_error("RUNTIME ERROR: Pointer is nullptr!\n");
         }
-        if(enemy_team->stillAlive()<=0){
+        if (enemy_team->stillAlive() <= 0) {
             throw std::runtime_error("RUNTIME ERROR: Can not attack an already dead team!\n");
         }
-
+        /*
+         * complete the function!
+         */
 
     }
 
