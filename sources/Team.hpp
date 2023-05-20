@@ -2,8 +2,10 @@
 #define TEAM_HPP
 
 #include <string>
+#include <map>
 #include <vector>
 
+#include "Character.hpp"
 #include "Cowboy.hpp"
 #include "OldNinja.hpp"
 #include "YoungNinja.hpp"
@@ -27,34 +29,38 @@ namespace ariel {
          */
         Character *_leader;
         /**
-         * @brief Vector of the Cowboy members.
+         * @brief Map of all team members, key of i'th member to join: Cowboy = i+10, Ninja = i+20.
          */
-        vector<Cowboy *> _cowboys;
-        /**
-         * @brief Vector of the Ninja members.
-         */
-        vector<Ninja *> _ninjas;
+        map<int, Character *> _members;
+//        /**
+//         * @brief Vector of the Cowboy members.
+//         */
+//        vector<Cowboy *> _cowboys;
+//        /**
+//         * @brief Vector of the Ninja members.
+//         */
+//        vector<Ninja *> _ninjas;
 
     protected:
 
         /**
          * @brief Choose leader to be the closest member to the old (dead) leader.
          */
-        void choose_new_leader();
+        void chooseNewLeader();
 
         /**
          * @brief Choose the closest enemy to our leader to be the victim.
          * @param enemy_team Pointer to the enemy Team.
          * @return Pointer to the chosen victim.
          */
-        Character *choose_victim(Team *enemy_team);
+        Character *chooseVictim(Team *enemy_team);
 
         /**
          * @brief Send an attacker on the victim.
          * @param attacker Character from our Team.
          * @param victim Character from enemy Team.
          */
-        void send_attack(Character *attacker, Character *victim);
+        void sendAttack(Character *attacker, Character *victim);
 
     public:
 
@@ -124,6 +130,13 @@ namespace ariel {
          * @return True if the Team LESS than 10 members.
          */
         bool isNotFull();
+
+        /**
+         *
+         * @param i
+         * @return The i'th member of the group (if no such key: nullptr).
+         */
+        Character *getMember(int i);
 
     };
 

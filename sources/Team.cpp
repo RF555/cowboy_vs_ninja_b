@@ -20,30 +20,56 @@ namespace ariel {
 
     Team::Team(const Team &_other) :
             size(_other.size),
-            _leader(_other._leader),
-            _cowboys(_other._cowboys),
-            _ninjas(_other._ninjas) {}
+            _leader(_other._leader) {}
+//            _cowboys(_other._cowboys),
+//            _ninjas(_other._ninjas)
 
     Team::Team(Team &&_other) noexcept {}
 
     Team::~Team() {
-        for (Character *cowboy: this->_cowboys) {
-            delete cowboy;
+        /*
+         * using map
+         */
+        for (auto member: this->_members) {
+            delete member.second;
         }
-        for (Character *ninja: this->_ninjas) {
-            delete ninja;
-        }
+        /*
+         * using vector
+         */
+//        for (auto cowboy: this->_cowboys) {
+//            delete cowboy;
+//        }
+//        for (auto ninja: this->_ninjas) {
+//            delete ninja;
+//        }
     }
 
     void Team::add(Character *new_member) {
         if (isNotFull()) {
-            if (new_member->getMyType() == COWBOY) {
-                this->_cowboys.push_back(dynamic_cast<Cowboy *>(new_member));
-            } else if (new_member->getMyType() == NINJA) {
-                this->_ninjas.push_back(dynamic_cast<Ninja *>(new_member));
+            if (new_member->isTeamMember()) {
+                throw std::runtime_error("RUNTIME ERROR: Already a team member!\n");
+            }
+            /*
+             * using map
+             */
+            if (new_member->getMyType() == COWBOY) { // i+10
+                this->_members[this->size + 10] = new_member;
+            } else if (new_member->getMyType() == NINJA) { // i+20
+                this->_members[this->size + 20] = new_member;
             } else {
                 throw std::invalid_argument("INVALID ARGUMENT: Object must be of type Cowboy or Ninja!\n");
             }
+
+            /*
+             * using vector
+             */
+//            if (new_member->getMyType() == COWBOY) {
+//                this->_cowboys.push_back(dynamic_cast<Cowboy *>(new_member));
+//            } else if (new_member->getMyType() == NINJA) {
+//                this->_ninjas.push_back(dynamic_cast<Ninja *>(new_member));
+//            } else {
+//                throw std::invalid_argument("INVALID ARGUMENT: Object must be of type Cowboy or Ninja!\n");
+//            }
             new_member->setTeamMember(true);
             ++this->size;
         } else {
@@ -65,7 +91,7 @@ namespace ariel {
 
     }
 
-    void Team::choose_new_leader() {
+    void Team::chooseNewLeader() {
         if (this->_leader->isAlive()) {
             throw std::runtime_error("RUNTIME ERROR: Can not choose new leader while old leader is alive!\n");
         }
@@ -77,7 +103,7 @@ namespace ariel {
 
     }
 
-    Character *Team::choose_victim(Team *enemy_team) {
+    Character *Team::chooseVictim(Team *enemy_team) {
         Character *temp_victim;
         double temp_distance = std::numeric_limits<double>::max();
         /***************
@@ -87,7 +113,7 @@ namespace ariel {
         return nullptr;
     }
 
-    void Team::send_attack(Character *attacker, Character *victim) {
+    void Team::sendAttack(Character *attacker, Character *victim) {
 
     }
 
