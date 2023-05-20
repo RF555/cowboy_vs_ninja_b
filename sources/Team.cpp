@@ -146,4 +146,12 @@ namespace ariel {
         return this->size < 10;
     }
 
+    Character *Team::getMember(int i) {
+        if (this->_members.contains(i)) {
+            return this->_members[i];
+        } else {
+            return nullptr;
+        }
+    }
+
 }
