@@ -9,7 +9,7 @@ namespace ariel {
     /**
      * Iteration order: FIFO (without distinguishing between cowboys and ninjas)
      */
-    class Team2 : protected Team {
+    class Team2 : public Team {
     private:
 
     public:

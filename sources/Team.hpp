@@ -144,7 +144,7 @@ namespace ariel {
     /**
      * Iteration order: ???
      */
-    class SmartTeam : protected Team {
+    class SmartTeam : public Team {
     public:
         SmartTeam();
 

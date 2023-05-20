@@ -4,7 +4,7 @@
 #include "Character.hpp"
 
 namespace ariel {
-    class Cowboy : protected Character {
+    class Cowboy : public Character {
     private:
         int n_bullets{};
 

@@ -4,7 +4,7 @@
 #include "Character.hpp"
 
 namespace ariel {
-    class Ninja : protected Character {
+    class Ninja : public Character {
     private:
         int _speed{};
 
