@@ -19,49 +19,31 @@ using namespace ariel;
 
 
 int main() {
-    Point p1(32.3, 44);
-    Point p2(1.3, 3.5);
-    assert(p1.distance(p2) == p2.distance(p1));
-    Cowboy *tom = new Cowboy("Tom", p1);
-    OldNinja *sushi = new OldNinja("sushi", p2);
-
-    cout << "Initialization:\n";
-    cout << tom->print() << endl;
-    cout << sushi->print() << endl;
-
+    Point a(32.3, 44), b(1.3, 3.5);
+    assert(a.distance(b) == b.distance(a));
+    Cowboy *tom = new Cowboy("Tom", a);
+    OldNinja *sushi = new OldNinja("sushi", b);
     tom->shoot(sushi);
-
-    cout << "\ntom->shoot(sushi)\n";
     cout << tom->print() << endl;
-    cout << sushi->print() << endl;
 
     sushi->move(tom);
-
-    cout << "\nsushi->move(tom)\n";
-    cout << sushi->print() << endl;
-
     sushi->slash(tom);
-
-    cout << "\nsushi->slash(tom)\n";
-    cout << tom->print() << endl;
-    cout << sushi->print() << endl;
 
     Team team_A(tom);
     team_A.add(new YoungNinja("Yogi", Point(64, 57)));
-
-    cout << "team_A:\n" << team_A.print() << endl;
 
     // Team b(tom); should throw tom is already in team a
 
     Team team_B(sushi);
     team_B.add(new TrainedNinja("Hikari", Point(12, 81)));
 
-    cout << "team_B:\n" << team_B.print() << endl;
 
     while (team_A.stillAlive() > 0 && team_B.stillAlive() > 0) {
         team_A.attack(&team_B);
         team_B.attack(&team_A);
+        cout << "Team A:" << endl;
         team_A.print();
+        cout << "Team B:" << endl;
         team_B.print();
     }
 

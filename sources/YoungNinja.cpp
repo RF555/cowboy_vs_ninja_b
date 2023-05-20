@@ -14,17 +14,4 @@ namespace ariel {
 
     YoungNinja::~YoungNinja() {}
 
-    YoungNinja &YoungNinja::operator=(const YoungNinja &_other) { return *this; }
-
-    YoungNinja &YoungNinja::operator=(YoungNinja &&_other) noexcept {
-        this->setName(_other.getName());
-        this->setLives(_other.getLives());
-        this->setLocation(_other.getLocation());
-        this->setSpeed(_other.getSpeed());
-        return *this;
-    }
-
-    void YoungNinja::slash(Character *enemy) {}
-
-    void YoungNinja::move(Character *enemy) {}
 }

@@ -22,20 +22,52 @@ namespace ariel {
         return *this;
     }
 
-    void Team2::add(Character *new_member) {
-        if (isNotFull()) {
-            if (new_member->isTeamMember()) {
-                throw std::runtime_error("RUNTIME ERROR: Already a team member!\n");
-            }
-            if (new_member->getMyType() == CHARACTER) {
-                throw std::invalid_argument("INVALID ARGUMENT: Object must be of type Cowboy or Ninja!\n");
-            } else {
-                this->addMemberAt(new_member, 0);
-            }
-            new_member->setTeamMember(true);
-        } else {
-            throw std::runtime_error("RUNTIME ERROR: The team is already full!\n");
+    void Team2::attack(Team *enemy_team) {
+        if (enemy_team == nullptr) {
+            throw std::runtime_error("RUNTIME ERROR: Pointer is nullptr!\n");
         }
+        if (enemy_team->stillAlive() <= 0) {
+            throw std::runtime_error("RUNTIME ERROR: Can not attack an already dead team!\n");
+        }
+        if (this->stillAlive() <= 0) {
+            throw std::runtime_error("RUNTIME ERROR: Dead team not attack!\n");
+        }
+        if (!this->_leader->isAlive()) {
+            chooseNewLeader();
+        }
+        Character *curr_victim = chooseVictim(enemy_team);
+
+        /***** using vector *****/
+        for (auto curr_member: this->_members) {
+            if (curr_member->isAlive()) {
+                if (!this->_leader->isAlive()) {
+                    chooseNewLeader();
+                    curr_victim = chooseVictim(enemy_team);
+                }
+                if (!curr_victim->isAlive()) {
+                    curr_victim = chooseVictim(enemy_team);
+                }
+                if (curr_victim != nullptr) {
+                    curr_member->attack(curr_victim);
+                }
+            }
+        }
+
+
+        /***** using map    *****/
+//        for (auto curr_member: this->_members_map) {
+//            if (curr_member.second->isAlive()) {
+//                if (!this->_leader->isAlive()) {
+//                    chooseNewLeader();
+//                    curr_victim = chooseVictim(enemy_team);
+//                }
+//                if (!curr_victim->isAlive()) {
+//                    curr_victim = chooseVictim(enemy_team);
+//                }
+//                curr_member.second->attack(curr_victim);
+//            }
+//        }
     }
+
 
 }

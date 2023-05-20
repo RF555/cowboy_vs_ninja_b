@@ -24,7 +24,7 @@ namespace ariel {
         if (isAlive()) {
             return output << "N " << this->getName() << ", " << this->getLives() << ", " << this->getLocation();
         } else {
-            return output << "N " << "(" << this->getName() << "), " << ", " << this->getLocation();
+            return output << "N " << "(" << this->getName() << "), " << this->getLocation();
         }
     }
 
@@ -48,6 +48,7 @@ namespace ariel {
         }
         if (this->isAlive() && enemy->isAlive()) {
             if (this->distance(enemy) <= 1) {
+//                cout << this->getName() << " slashed " << enemy->getName() << endl;
                 enemy->hit(40);
             }
         } else if (this->isAlive()) {
@@ -61,8 +62,9 @@ namespace ariel {
         if (!this->isAlive()) {
             throw std::runtime_error("RUNTIME ERROR: Dead Ninja can not move!\n");
         }
-        this->getLocation().movePoint(
-                this->getLocation().moveTowards(getLocation(), enemy->getLocation(), this->_speed));
+        Point temp = Point::moveTowards(this->getLocation(), enemy->getLocation(), this->getSpeed());
+//        cout << this->getName() << " moved to: " << temp.print() << endl;
+        this->setLocation(temp);
     }
 
     void Ninja::attack(Character *enemy) {

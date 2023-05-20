@@ -46,8 +46,8 @@ namespace ariel {
     }
 
     Point &Point::operator=(Point &&_other) noexcept {
-        this->x_coordinate = _other.getX();
-        this->y_coordinate = _other.getY();
+        this->x_coordinate = _other.x_coordinate;
+        this->y_coordinate = _other.y_coordinate;
         return *this;
     }
 
@@ -78,5 +78,12 @@ namespace ariel {
         this->y_coordinate = _other.getY();
     }
 
+    void Point::setX(double xCoordinate) {
+        x_coordinate = xCoordinate;
+    }
+
+    void Point::setY(double yCoordinate) {
+        y_coordinate = yCoordinate;
+    }
 
 }

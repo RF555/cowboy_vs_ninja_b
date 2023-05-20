@@ -19,7 +19,9 @@ namespace ariel {
      *          2. all ninjas (FIFO).
      */
     class Team {
-    private:
+
+    protected:
+
         /**
          * @brief Number of team members.
          */
@@ -31,9 +33,12 @@ namespace ariel {
         /**
          * @brief Map of all team members.
          */
-        map<int, Character *> _members;
+        map<int, Character *> _members_map;
+        /**
+         * @brief Vector of all team members.
+         */
+        vector<Character *> _members;
 
-    protected:
 
         /**
          * @brief Choose leader to be the closest member to the old (dead) leader.
@@ -47,7 +52,7 @@ namespace ariel {
          */
         virtual Character *chooseVictim(Team *enemy_team);
 
-        virtual void addMemberAt(Character *new_member, int i_plus);
+//        virtual void addMemberAt(Character *new_member, int i_plus);
 
     public:
 
@@ -114,10 +119,10 @@ namespace ariel {
 
         bool operator==(Team &_other);
 
-        /**
-         * @return True if the Team LESS than 10 members.
-         */
-        bool isNotFull() const;
+//        /**
+//         * @return True if the Team LESS than 10 members.
+//         */
+//        bool isNotFull() const;
 
         /**
          *
@@ -129,7 +134,7 @@ namespace ariel {
 
         Character *getLeader() const;
 
-        void setLeader(Character *leader);
+//        void setLeader(Character *leader);
 
         explicit operator std::string();
 
@@ -140,4 +145,4 @@ namespace ariel {
     };
 
 }
-#endif //TEAM_HPP
+#endif

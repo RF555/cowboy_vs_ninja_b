@@ -35,14 +35,16 @@ namespace ariel {
 
         Team2 &operator=(Team2 &&_other) noexcept;
 
-        /**
-         * @brief Adds the Character to the team.
-         * @param new_member Reference to a Character.
-         * @details Key of i'th member to join is i.
-         * @throws std::invalid_argument If new_member is not of type Cowboy or Ninja.
-         * @throws std::runtime_error If there are already 10 members in the team.
-         */
-        void add(Character *new_member) override;
+//        /**
+//         * @brief Adds the Character to the team.
+//         * @param new_member Reference to a Character.
+//         * @details Key of i'th member to join is i.
+//         * @throws std::invalid_argument If new_member is not of type Cowboy or Ninja.
+//         * @throws std::runtime_error If there are already 10 members in the team.
+//         */
+//        void add(Character *new_member) override;
+
+        void attack(Team *enemy_team) override;
 
 
     };

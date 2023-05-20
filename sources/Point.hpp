@@ -67,6 +67,10 @@ namespace ariel {
          */
         void movePoint(const Point& _other);
 
+        void setX(double xCoordinate);
+
+        void setY(double yCoordinate);
+
     };
 
 }
