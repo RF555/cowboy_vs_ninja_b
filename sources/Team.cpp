@@ -95,22 +95,37 @@ namespace ariel {
         if (this->_leader->isAlive()) {
             throw std::runtime_error("RUNTIME ERROR: Can not choose new leader while old leader is alive!\n");
         }
-        Character *temp_leader;
+        Character *new_leader = nullptr;
+        double new_distance = std::numeric_limits<double>::max();
         double temp_distance = std::numeric_limits<double>::max();
-        /***************
+        /*
          * Iterate over all our Team members
-         ***************/
-
+         */
+        for (auto temp: this->_members) {
+            temp_distance = temp.second->distance(this->_leader);
+            if (temp_distance < new_distance) {
+                new_leader = temp.second;
+                new_distance = temp_distance;
+            }
+        }
+        this->_leader = new_leader;
     }
 
     Character *Team::chooseVictim(Team *enemy_team) {
-        Character *temp_victim;
+        Character *new_victim = nullptr;
+        double new_distance = std::numeric_limits<double>::max();
         double temp_distance = std::numeric_limits<double>::max();
-        /***************
+        /*
          * Iterate over all enemy Team members
-         ***************/
-
-        return nullptr;
+         */
+        for (auto temp: this->_members) {
+            temp_distance = temp.second->distance(this->_leader);
+            if (temp_distance < new_distance) {
+                new_victim = temp.second;
+                new_distance = temp_distance;
+            }
+        }
+        return new_victim;
     }
 
     void Team::sendAttack(Character *attacker, Character *victim) {

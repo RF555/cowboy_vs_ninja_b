@@ -53,7 +53,7 @@ namespace ariel {
          * @param enemy_team Pointer to the enemy Team.
          * @return Pointer to the chosen victim.
          */
-        Character *chooseVictim(Team *enemy_team);
+        virtual Character *chooseVictim(Team *enemy_team);
 
         /**
          * @brief Send an attacker on the victim.
