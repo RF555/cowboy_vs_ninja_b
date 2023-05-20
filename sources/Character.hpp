@@ -61,7 +61,6 @@ namespace ariel {
 
         bool operator==(Character &_other);
 
-        // I/O operation:
         friend std::ostream &operator<<(ostream &output, Character &_other);
 
         /**

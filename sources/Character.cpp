@@ -27,7 +27,7 @@ namespace ariel {
             _location(_other._location),
             _lives(_other._lives),
             _name(_other._name),
-            team_member(_other.) {}
+            team_member(_other.team_member) {}
 
     Character::Character(Character &&_other) noexcept {}
 
@@ -50,7 +50,7 @@ namespace ariel {
 
     void Character::hit(int hit_points) {
         if (hit_points < 0) {
-            throw std::invalid_argument("INVALID ARGUMENT: hit_points mus be positive!\n")
+            throw std::invalid_argument("INVALID ARGUMENT: hit_points mus be positive!\n");
         }
         if (hit_points > this->_lives) {
             this->_lives = 0;

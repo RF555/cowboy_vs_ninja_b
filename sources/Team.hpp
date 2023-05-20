@@ -29,17 +29,9 @@ namespace ariel {
          */
         Character *_leader;
         /**
-         * @brief Map of all team members, key of i'th member to join: Cowboy = i+10, Ninja = i+20.
+         * @brief Map of all team members.
          */
         map<int, Character *> _members;
-//        /**
-//         * @brief Vector of the Cowboy members.
-//         */
-//        vector<Cowboy *> _cowboys;
-//        /**
-//         * @brief Vector of the Ninja members.
-//         */
-//        vector<Ninja *> _ninjas;
 
     protected:
 
@@ -55,12 +47,7 @@ namespace ariel {
          */
         virtual Character *chooseVictim(Team *enemy_team);
 
-        /**
-         * @brief Send an attacker on the victim.
-         * @param attacker Character from our Team.
-         * @param victim Character from enemy Team.
-         */
-        void sendAttack(Character *attacker, Character *victim);
+        virtual void addMemberAt(Character *new_member, int i_plus);
 
     public:
 
@@ -86,6 +73,7 @@ namespace ariel {
         /**
          * @brief Adds the Character to the team.
          * @param new_member Reference to a Character.
+         * @details Key of i'th member to join: Cowboy = i+10, Ninja = i+20.
          * @throws std::invalid_argument If new_member is not of type Cowboy or Ninja.
          * @throws std::runtime_error If there are already 10 members in the team.
          */
@@ -133,32 +121,23 @@ namespace ariel {
 
         /**
          *
-         * @param i
-         * @return The i'th member of the group (if no such key: nullptr).
+         * @return Iterable map of our members;
          */
-        Character *getMember(int i);
+        const map<int, Character *> &getMembers();
+
+        int getSize() const;
+
+        Character *getLeader() const;
+
+        void setLeader(Character *leader);
+
+        explicit operator std::string();
+
+        friend std::ostream &operator<<(ostream &output, const Team &_team);
+
+        virtual std::ostream &toPrint(ostream &output);
 
     };
 
-
-    /**
-     * Iteration order: ???
-     */
-    class SmartTeam : public Team {
-    public:
-        SmartTeam();
-
-        SmartTeam(Character &leader);
-
-        SmartTeam(SmartTeam const &_other);
-
-        SmartTeam(SmartTeam &&_other) noexcept;
-
-        ~SmartTeam() override;
-
-        SmartTeam &operator=(SmartTeam const &_other);
-
-        SmartTeam &operator=(SmartTeam &&_other) noexcept;
-    };
 }
 #endif //TEAM_HPP

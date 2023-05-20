@@ -21,27 +21,19 @@ namespace ariel {
     Team::Team(const Team &_other) :
             size(_other.size),
             _leader(_other._leader) {}
-//            _cowboys(_other._cowboys),
-//            _ninjas(_other._ninjas)
 
     Team::Team(Team &&_other) noexcept {}
 
     Team::~Team() {
-        /*
-         * using map
-         */
         for (auto member: this->_members) {
             delete member.second;
         }
-        /*
-         * using vector
-         */
-//        for (auto cowboy: this->_cowboys) {
-//            delete cowboy;
-//        }
-//        for (auto ninja: this->_ninjas) {
-//            delete ninja;
-//        }
+    }
+
+    void Team::addMemberAt(Character *new_member, int i_plus) {
+        this->_members[this->size + i_plus] = new_member;
+        new_member->setTeamMember(true);
+        ++this->size;
     }
 
     void Team::add(Character *new_member) {
@@ -49,29 +41,13 @@ namespace ariel {
             if (new_member->isTeamMember()) {
                 throw std::runtime_error("RUNTIME ERROR: Already a team member!\n");
             }
-            /*
-             * using map
-             */
             if (new_member->getMyType() == COWBOY) { // i+10
-                this->_members[this->size + 10] = new_member;
+                this->addMemberAt(new_member, 10);
             } else if (new_member->getMyType() == NINJA) { // i+20
-                this->_members[this->size + 20] = new_member;
+                this->addMemberAt(new_member, 20);
             } else {
                 throw std::invalid_argument("INVALID ARGUMENT: Object must be of type Cowboy or Ninja!\n");
             }
-
-            /*
-             * using vector
-             */
-//            if (new_member->getMyType() == COWBOY) {
-//                this->_cowboys.push_back(dynamic_cast<Cowboy *>(new_member));
-//            } else if (new_member->getMyType() == NINJA) {
-//                this->_ninjas.push_back(dynamic_cast<Ninja *>(new_member));
-//            } else {
-//                throw std::invalid_argument("INVALID ARGUMENT: Object must be of type Cowboy or Ninja!\n");
-//            }
-            new_member->setTeamMember(true);
-            ++this->size;
         } else {
             throw std::runtime_error("RUNTIME ERROR: The team is already full!\n");
         }
@@ -85,10 +61,22 @@ namespace ariel {
         if (enemy_team->stillAlive() <= 0) {
             throw std::runtime_error("RUNTIME ERROR: Can not attack an already dead team!\n");
         }
-        /*
-         * complete the function!
-         */
-
+        if (!this->_leader->isAlive()) {
+            chooseNewLeader();
+        }
+        Character *curr_victim = chooseVictim(enemy_team);
+        for (auto curr_member: this->_members) {
+            if (curr_member.second->isAlive()) {
+                if (!this->_leader->isAlive()) {
+                    chooseNewLeader();
+                    curr_victim = chooseVictim(enemy_team);
+                }
+                if (!curr_victim->isAlive()) {
+                    curr_victim = chooseVictim(enemy_team);
+                }
+                curr_member.second->attack(curr_victim);
+            }
+        }
     }
 
     void Team::chooseNewLeader() {
@@ -102,13 +90,15 @@ namespace ariel {
          * Iterate over all our Team members
          */
         for (auto temp: this->_members) {
-            temp_distance = temp.second->distance(this->_leader);
-            if (temp_distance < new_distance) {
-                new_leader = temp.second;
-                new_distance = temp_distance;
+            if (temp.second->isAlive()) {
+                temp_distance = temp.second->distance(this->_leader);
+                if (temp_distance < new_distance) {
+                    new_leader = temp.second;
+                    new_distance = temp_distance;
+                }
             }
         }
-        this->_leader = new_leader;
+        this->setLeader(new_leader);
     }
 
     Character *Team::chooseVictim(Team *enemy_team) {
@@ -118,31 +108,33 @@ namespace ariel {
         /*
          * Iterate over all enemy Team members
          */
-        for (auto temp: this->_members) {
-            temp_distance = temp.second->distance(this->_leader);
-            if (temp_distance < new_distance) {
-                new_victim = temp.second;
-                new_distance = temp_distance;
+        for (auto temp: enemy_team->getMembers()) {
+            if (temp.second->isAlive()) {
+                temp_distance = temp.second->distance(this->_leader);
+                if (temp_distance < new_distance) {
+                    new_victim = temp.second;
+                    new_distance = temp_distance;
+                }
             }
         }
         return new_victim;
     }
 
-    void Team::sendAttack(Character *attacker, Character *victim) {
-
-    }
-
-
     int Team::stillAlive() {
         int n_alive = 0;
-        /***************
+        /*
          * Iterate over all our Team members
-         ***************/
+         */
+        for (auto member: this->_members) {
+            if (member.second->isAlive()) {
+                ++n_alive;
+            }
+        }
         return n_alive;
     }
 
     string Team::print() {
-        return std::string();
+        return string(*this);
     }
 
     Team &Team::operator=(const Team &_other) {
@@ -161,12 +153,41 @@ namespace ariel {
         return this->size < 10;
     }
 
-    Character *Team::getMember(int i) {
-        if (this->_members.contains(i)) {
-            return this->_members[i];
-        } else {
-            return nullptr;
-        }
+    const map<int, Character *> &Team::getMembers() {
+        return this->_members;
     }
+
+    int Team::getSize() const {
+        return size;
+    }
+
+    Character *Team::getLeader() const {
+        return _leader;
+    }
+
+    void Team::setLeader(Character *leader) {
+        _leader = leader;
+    }
+
+    Team::operator std::string() {
+        ostringstream s;
+        toPrint(s);
+        return s.str();
+    }
+
+    std::ostream &Team::toPrint(ostream &output) {
+        for (auto member: this->_members) {
+            output << member.second << "\n";
+        }
+        return output;
+    }
+
+    std::ostream &operator<<(ostream &output, const Team &_team) {
+        for (auto member: _team._members) {
+            output << member.second << "\n";
+        }
+        return output;
+    }
+
 
 }
