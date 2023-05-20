@@ -117,7 +117,7 @@ namespace ariel {
         /**
          * @return True if the Team LESS than 10 members.
          */
-        bool isNotFull();
+        bool isNotFull() const;
 
         /**
          *

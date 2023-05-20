@@ -25,7 +25,7 @@ int main() {
     Cowboy *tom = new Cowboy("Tom", p1);
     OldNinja *sushi = new OldNinja("sushi", p2);
 
-    cout << "initialization:\n";
+    cout << "Initialization:\n";
     cout << tom->print() << endl;
     cout << sushi->print() << endl;
 

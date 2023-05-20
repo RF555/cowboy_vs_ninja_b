@@ -37,19 +37,20 @@ namespace ariel {
     }
 
     void Team::add(Character *new_member) {
-        if (isNotFull()) {
-            if (new_member->isTeamMember()) {
-                throw std::runtime_error("RUNTIME ERROR: Already a team member!\n");
-            }
-            if (new_member->getMyType() == COWBOY) { // i+10
-                this->addMemberAt(new_member, 10);
-            } else if (new_member->getMyType() == NINJA) { // i+20
-                this->addMemberAt(new_member, 20);
-            } else {
-                throw std::invalid_argument("INVALID ARGUMENT: Object must be of type Cowboy or Ninja!\n");
-            }
-        } else {
+        if (this->size >= 10) {
             throw std::runtime_error("RUNTIME ERROR: The team is already full!\n");
+        }
+
+        if (new_member->isTeamMember()) {
+            throw std::runtime_error("RUNTIME ERROR: Already a team member!\n");
+        }
+
+        if (new_member->getMyType() == COWBOY) { // i+10
+            this->addMemberAt(new_member, 10);
+        } else if (new_member->getMyType() == NINJA) { // i+20
+            this->addMemberAt(new_member, 20);
+        } else {
+            throw std::invalid_argument("INVALID ARGUMENT: Object must be of type Cowboy or Ninja!\n");
         }
     }
 
@@ -149,7 +150,7 @@ namespace ariel {
         return &(*this) == &_other;
     }
 
-    bool Team::isNotFull() {
+    bool Team::isNotFull() const {
         return this->size < 10;
     }
 
@@ -176,7 +177,7 @@ namespace ariel {
     }
 
     std::ostream &Team::toPrint(ostream &output) {
-        output <<"Team size: "<< this->getSize() << "\n";
+        output << "Team size: " << this->getSize() << "\n";
         for (auto member: this->_members) {
             output << member.second->print() << "\n";
         }
