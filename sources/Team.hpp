@@ -2,7 +2,6 @@
 #define TEAM_HPP
 
 #include <string>
-#include <map>
 #include <vector>
 
 #include "Character.hpp"
@@ -30,10 +29,6 @@ namespace ariel {
          * @brief  Pointer to the them leader.
          */
         Character *_leader;
-        /**
-         * @brief Map of all team members.
-         */
-        map<int, Character *> _members_map;
         /**
          * @brief Vector of all team members.
          */
@@ -119,22 +114,9 @@ namespace ariel {
 
         bool operator==(Team &_other);
 
-//        /**
-//         * @return True if the Team LESS than 10 members.
-//         */
-//        bool isNotFull() const;
-
-        /**
-         *
-         * @return Iterable map of our members;
-         */
-        const map<int, Character *> &getMembers();
-
         int getSize() const;
 
         Character *getLeader() const;
-
-//        void setLeader(Character *leader);
 
         explicit operator std::string();
 
