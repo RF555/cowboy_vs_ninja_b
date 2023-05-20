@@ -31,9 +31,10 @@ namespace ariel {
 
         Ninja(Ninja &&_other) noexcept;
 
-        int getSpeed() const;
 
         ~Ninja() override;
+
+        int getSpeed() const;
 
         Ninja &operator=(const Ninja &_other);
 

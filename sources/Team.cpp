@@ -176,8 +176,9 @@ namespace ariel {
     }
 
     std::ostream &Team::toPrint(ostream &output) {
+        output <<"Team size: "<< this->getSize() << "\n";
         for (auto member: this->_members) {
-            output << member.second << "\n";
+            output << member.second->print() << "\n";
         }
         return output;
     }
