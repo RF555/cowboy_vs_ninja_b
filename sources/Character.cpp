@@ -69,7 +69,7 @@ namespace ariel {
         return s.str();
     }
 
-    Point &Character::getLocation() const { return _location; }
+    const Point &Character::getLocation() const { return this->_location; }
 
     int Character::getLives() const { return _lives; }
 
@@ -77,14 +77,14 @@ namespace ariel {
         return _other.toPrint(output);
     }
 
-    void Character::setLocation(const Point &location) {
+    void Character::setLocation(Point location) {
         this->_location.setX(location.getX());
         this->_location.setY(location.getY());
     }
 
     void Character::setLives(int lives) { this->_lives = lives; }
 
-    void Character::setName(const string &name) { this->_name = name; }
+    void Character::setName(string name) { this->_name = name; }
 
     bool Character::operator==(Character &_other) { return &(*this) == &_other; }
 

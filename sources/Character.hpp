@@ -25,11 +25,11 @@ namespace ariel {
         bool team_member;
 
     protected:
-        void setLocation(const Point &location);
+        void setLocation(Point location);
 
         void setLives(int lives);
 
-        void setName(const string &name);
+        void setName(string name);
 
         void setMyType(CharacterType myType);
 
@@ -104,7 +104,7 @@ namespace ariel {
 
         void setTeamMember(bool teamMember);
 
-        Point &getLocation() const;
+        const Point &getLocation() const;
 
         int getLives() const;
 
