@@ -18,13 +18,13 @@ namespace ariel {
          * @param point Point as the location of the Character.
          * @details Cowboy is constructed with 6 bullets and 110 lives.
          */
-        Cowboy(const string &name, Point point);
+        Cowboy(string name, const Point &point);
 
         Cowboy(Cowboy const &_other);
 
         Cowboy(Cowboy &&_other) noexcept;
 
-        ~Cowboy() override;
+        ~Cowboy();
 
         Cowboy &operator=(const Cowboy &_other);
 
@@ -49,7 +49,7 @@ namespace ariel {
         /**
          * @return True if the cowboy has bullets left.
          */
-        virtual bool hasboolets();
+        virtual bool hasboolets() const;
 
         /**
          * @brief Reloads 6 bullets.

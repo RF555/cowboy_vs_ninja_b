@@ -6,7 +6,7 @@ namespace ariel {
             Character(110),
             n_bullets(6) {}
 
-    Cowboy::Cowboy(const string &name, Point point) :
+    Cowboy::Cowboy(string name, const Point &point) :
             Character(name, point, 110, COWBOY),
             n_bullets(6) {}
 
@@ -35,19 +35,19 @@ namespace ariel {
                 enemy->hit(10);
                 --this->n_bullets;
             }
-        } else if (this->isAlive()) {
+        }
+        if (this->isAlive()) {
             throw std::runtime_error("RUNTIME ERROR: Dead Cowboy can not attack!\n");
         } else {
             throw std::runtime_error("RUNTIME ERROR: Cowboy can not attack a dead Character!\n");
         }
     }
 
-    bool Cowboy::hasboolets() { return this->n_bullets > 0; }
+    bool Cowboy::hasboolets() const { return this->n_bullets > 0; }
 
     void Cowboy::reload() {
         if (!this->isAlive()) {
             throw std::runtime_error("RUNTIME ERROR: Dead Cowboy can not reload!\n");
-
         }
         this->n_bullets = 6;
     }
