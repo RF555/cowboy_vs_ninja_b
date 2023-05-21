@@ -4,8 +4,8 @@
 
 namespace ariel {
     Point::Point() :
-            x_coordinate(0),
-            y_coordinate(0) {}
+            x_coordinate(0.0),
+            y_coordinate(0.0) {}
 
     Point::Point(double _x_coordinate, double _y_coordinate) :
             x_coordinate(_x_coordinate),
@@ -19,25 +19,28 @@ namespace ariel {
 
     Point::~Point() {}
 
-    double Point::distance(const Point &_point2) {
+    double Point::distance(const Point &_point2) const {
         return sqrt((this->getX() - _point2.getX()) * (this->getX() - _point2.getX()) +
                     (this->getY() - _point2.getY()) * (this->getY() - _point2.getY()));
     }
 
-    std::string Point::print() { return string(*this); }
+    std::string Point::print() const {
+        string st = "(" + to_string(getX()) + ", " + to_string(getY()) + ")";
+        return st;
+    }
 
 
     Point Point::moveTowards(Point &src, Point &dest, double len) {
         if (len < 0) {
             throw std::invalid_argument("INVALID ARGUMENT: Distance (length) must be positive!");
         }
-        double _dist = src.distance(dest);
-        if (_dist <= len) {
-            return Point(dest);
-        } else {
+        double _dist = src.distance(dest); // distance between src and dest
+        if (_dist <= len) { // src not further than 'len' from dest -> return dest
+            return Point{dest};
+        } else { // src is further than 'len' from dest
             Point vec(dest.getX() - src.getX(), dest.getY() - src.getY());
             Point u_vec(vec.getX() / _dist, vec.getY() / _dist);
-            return Point(src.getX() + u_vec.getX() * len, src.getY() + u_vec.getY() * len);
+            return Point{(src.getX() + u_vec.getX() * len), (src.getY() + u_vec.getY() * len)};
         }
     }
 

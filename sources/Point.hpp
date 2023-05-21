@@ -35,13 +35,13 @@ namespace ariel {
          * @param _point2 A point.
          * @return Distance between the 2 points.
          */
-        double distance(const Point &_point2);
+        double distance(const Point &_point2) const;
 
         /**
          * @return A string of the x and y coordinates inside of parenthesis.
          *      Example: (x,y)
          */
-        string print();
+        string print() const;
 
         /**
          * @brief Find the closest point to 'dest', that is not further then 'len' from 'src'.
