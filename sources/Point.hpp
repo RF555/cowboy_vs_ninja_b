@@ -51,7 +51,7 @@ namespace ariel {
          * @return A point between 'src' and 'dest'.
          * @throws std::invalid_argument If len < 0 (is negative).
          */
-        static Point moveTowards(Point &src, Point &dest, double len);
+        static Point moveTowards(const Point &src, const Point &dest, double len);
 
         Point &operator=(Point const &_other);
 
@@ -65,7 +65,7 @@ namespace ariel {
          * @brief Change this Point location.
          * @param _other The destination Point.
          */
-        void movePoint(const Point& _other);
+        void movePoint(const Point &_other);
 
         void setX(double xCoordinate);
 

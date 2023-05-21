@@ -30,7 +30,7 @@ namespace ariel {
     }
 
 
-    Point Point::moveTowards(Point &src, Point &dest, double len) {
+    Point Point::moveTowards(const Point &src, const Point &dest, double len) {
         if (len < 0) {
             throw std::invalid_argument("INVALID ARGUMENT: Distance (length) must be positive!");
         }
