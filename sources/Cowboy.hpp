@@ -24,7 +24,7 @@ namespace ariel {
 
         Cowboy(Cowboy &&_other) noexcept;
 
-        ~Cowboy();
+        ~Cowboy() override;
 
         Cowboy &operator=(const Cowboy &_other);
 
@@ -59,7 +59,6 @@ namespace ariel {
 
         ostream &toPrint(ostream &output) override;
 
-//        void attack(Character *enemy) override;
     };
 
 }

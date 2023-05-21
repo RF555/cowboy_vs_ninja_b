@@ -23,6 +23,10 @@ namespace ariel {
 
         ~YoungNinja() override;
 
+        YoungNinja &operator=(const YoungNinja &_other);
+
+        YoungNinja &operator=(YoungNinja &&_other) noexcept;
+
     };
 
 }

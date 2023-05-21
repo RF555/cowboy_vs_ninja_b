@@ -19,7 +19,7 @@ namespace ariel {
      */
     class Team {
 
-    protected:
+    private:
 
         /**
          * @brief Number of team members.
@@ -34,6 +34,7 @@ namespace ariel {
          */
         vector<Character *> _members;
 
+    protected:
 
         /**
          * @brief Choose leader to be the closest member to the old (dead) leader.

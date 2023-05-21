@@ -67,12 +67,5 @@ namespace ariel {
         this->setLocation(temp);
     }
 
-//    void Ninja::attack(Character *enemy) {
-//        if (this->distance(enemy) <= 1) {
-//            slash(enemy);
-//        } else {
-//            this->move(enemy);
-//        }
-//    }
 
 }

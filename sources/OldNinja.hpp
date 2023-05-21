@@ -21,7 +21,11 @@ namespace ariel {
 
         OldNinja(OldNinja &&_other) noexcept;
 
-        ~OldNinja();
+        ~OldNinja() override;
+
+        OldNinja &operator=(const OldNinja &_other);
+
+        OldNinja &operator=(OldNinja &&_other) noexcept;
 
     };
 

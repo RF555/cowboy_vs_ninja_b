@@ -31,7 +31,6 @@ namespace ariel {
 
         Ninja(Ninja &&_other) noexcept;
 
-
         ~Ninja() override;
 
         int getSpeed() const;
@@ -61,7 +60,6 @@ namespace ariel {
 
         ostream &toPrint(ostream &output) override;
 
-//        void attack(Character *enemy) override;
     };
 
 }

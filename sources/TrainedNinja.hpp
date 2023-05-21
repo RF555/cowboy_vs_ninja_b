@@ -22,7 +22,11 @@ namespace ariel {
 
         TrainedNinja(TrainedNinja &&_other) noexcept;
 
-        ~TrainedNinja();
+        ~TrainedNinja() override;
+
+        TrainedNinja &operator=(const TrainedNinja &_other);
+
+        TrainedNinja &operator=(TrainedNinja &&_other) noexcept;
 
     };
 

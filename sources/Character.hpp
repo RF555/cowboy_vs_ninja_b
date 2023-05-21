@@ -110,7 +110,6 @@ namespace ariel {
 
         CharacterType getMyType() const;
 
-//        virtual void attack(Character *enemy) = 0;
     };
 
 }
