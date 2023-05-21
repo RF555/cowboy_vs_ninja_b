@@ -25,7 +25,7 @@ namespace ariel {
          * @param lives Number of lives (hit points) the Character hsa.
          * @param speed An int representing the Ninja's speed (length it can
          */
-        Ninja(const string &name, Point point, int lives, int speed);
+        Ninja(string name, const Point &point, int lives, int speed);
 
         Ninja(Ninja const &_other);
 
@@ -45,7 +45,7 @@ namespace ariel {
          * @param enemy Reference of an enemy to move towards to.
          * @throws std::runtime_error If this Ninja is dead.
          */
-        virtual void move(Character *enemy);
+        virtual void move(const Character *enemy);
 
         /**
          * @brief Slush the enemy.

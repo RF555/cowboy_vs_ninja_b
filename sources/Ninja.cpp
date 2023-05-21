@@ -10,7 +10,7 @@ namespace ariel {
             Character(lives),
             _speed(speed) {}
 
-    Ninja::Ninja(const string &name, Point point, int lives, int speed) :
+    Ninja::Ninja(string name, const Point &point, int lives, int speed) :
             Character(name, point, lives, NINJA),
             _speed(speed) {}
 
@@ -18,7 +18,7 @@ namespace ariel {
 
     Ninja::Ninja(Ninja &&_other) noexcept {}
 
-    Ninja::~Ninja() = default;
+    Ninja::~Ninja() {};
 
     ostream &Ninja::toPrint(ostream &output) {
         if (isAlive()) {
@@ -47,7 +47,7 @@ namespace ariel {
             throw std::runtime_error("RUNTIME ERROR: Ninja can not attack itself!\n");
         }
         if (this->isAlive() && enemy->isAlive()) {
-            if (this->distance(enemy) <= 1) {
+            if (this->distance(enemy) <= 1.0) {
 //                cout << this->getName() << " slashed " << enemy->getName() << endl;
                 enemy->hit(40);
             }
@@ -58,7 +58,7 @@ namespace ariel {
         }
     }
 
-    void Ninja::move(Character *enemy) {
+    void Ninja::move(const Character *enemy) {
         if (!this->isAlive()) {
             throw std::runtime_error("RUNTIME ERROR: Dead Ninja can not move!\n");
         }
