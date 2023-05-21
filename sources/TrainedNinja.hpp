@@ -16,13 +16,13 @@ namespace ariel {
          * @param point Point as the location of the Character.
          * @details TrainedNinja is constructed with 12 bullets and 120 lives.
          */
-        TrainedNinja(const string &name, Point point);
+        TrainedNinja(string name, const Point &point);
 
         TrainedNinja(TrainedNinja const &_other);
 
         TrainedNinja(TrainedNinja &&_other) noexcept;
 
-        ~TrainedNinja() override;
+        ~TrainedNinja();
 
     };
 

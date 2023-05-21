@@ -5,7 +5,7 @@ namespace ariel {
     TrainedNinja::TrainedNinja() :
             Ninja(120, 12) {}
 
-    TrainedNinja::TrainedNinja(const string &name, Point point) :
+    TrainedNinja::TrainedNinja(string name, const Point &point) :
             Ninja(name, point, 120, 12) {}
 
     TrainedNinja::TrainedNinja(const TrainedNinja &_other) {}
