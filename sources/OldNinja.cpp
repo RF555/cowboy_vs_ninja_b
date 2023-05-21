@@ -5,7 +5,7 @@ namespace ariel {
     OldNinja::OldNinja() :
             Ninja(150, 8) {}
 
-    OldNinja::OldNinja(const string &name, Point point) :
+    OldNinja::OldNinja(string name, const Point &point) :
             Ninja(name, point, 150, 8) {}
 
     OldNinja::OldNinja(const OldNinja &_other) {}
