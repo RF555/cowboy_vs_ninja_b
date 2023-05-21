@@ -46,7 +46,7 @@ namespace ariel {
          * @param lives Number of lives (hit points) the Character hsa.
          * @param _type enum CharacterType representing the Character's type (Character/Cowboy/Ninja).
          */
-        Character(const string &name, Point point, int lives, CharacterType _type);
+        Character(string &name, const Point &point, int lives, CharacterType _type);
 
         Character(Character const &_other);
 
@@ -104,7 +104,7 @@ namespace ariel {
 
         void setTeamMember(bool teamMember);
 
-        Point &getLocation();
+        Point &getLocation() const;
 
         int getLives() const;
 

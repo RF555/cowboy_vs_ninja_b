@@ -16,7 +16,7 @@ namespace ariel {
             my_type(CHARACTER),
             team_member(false) {}
 
-    Character::Character(const string &name, Point point, int lives, CharacterType _type) :
+    Character::Character(string &name, const Point &point, int lives, CharacterType _type) :
             _location(point),
             _lives(lives),
             _name(name),
@@ -42,7 +42,7 @@ namespace ariel {
         return *this;
     }
 
-    bool Character::isAlive() { return this->_lives > 0; }
+    bool Character::isAlive() { return this->getLives() > 0; }
 
     double Character::distance(Character *_other) {
         return this->getLocation().distance(_other->getLocation());
@@ -69,7 +69,7 @@ namespace ariel {
         return s.str();
     }
 
-    Point &Character::getLocation() { return _location; }
+    Point &Character::getLocation() const { return _location; }
 
     int Character::getLives() const { return _lives; }
 
