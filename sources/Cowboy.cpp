@@ -16,7 +16,7 @@ namespace ariel {
 
     Cowboy::Cowboy(Cowboy &&_other) noexcept {}
 
-    Cowboy::~Cowboy() = default;
+    Cowboy::~Cowboy() {};
 
     ostream &Cowboy::toPrint(ostream &output) {
         if (isAlive()) {
