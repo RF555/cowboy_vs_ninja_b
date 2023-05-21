@@ -36,17 +36,54 @@ namespace ariel {
             chooseNewLeader();
         }
         Character *curr_victim = chooseVictim(enemy_team);
+
+        if (curr_victim) {
+            attack_victim(curr_victim, enemy_team);
+        } else {
+            return;
+        }
+
+//        for (auto curr_member: this->_members) {
+//            if (curr_member->isAlive()) {
+//                if (!this->_leader->isAlive()) {
+//                    chooseNewLeader();
+//                    curr_victim = chooseVictim(enemy_team);
+//                }
+//                if (!curr_victim->isAlive()) {
+//                    curr_victim = chooseVictim(enemy_team);
+//                }
+//                if (curr_victim != nullptr) {
+//                    curr_member->attack(curr_victim);
+//                }
+//            }
+//        }
+    }
+
+    void Team2::attack_victim(Character *curr_victim, Team *enemy_team) {
         for (auto curr_member: this->_members) {
-            if (curr_member->isAlive()) {
-                if (!this->_leader->isAlive()) {
-                    chooseNewLeader();
-                    curr_victim = chooseVictim(enemy_team);
+            if (curr_member == nullptr || curr_victim == nullptr) { return; }
+
+            if (curr_member->isAlive() && curr_victim->isAlive()) {
+                if (auto *curr_cowboy = dynamic_cast<Cowboy *>(curr_member)) {
+                    if (curr_cowboy->hasboolets()) {
+                        curr_cowboy->shoot(curr_victim);
+                        if (!curr_victim->isAlive()) {
+                            curr_victim = chooseVictim(enemy_team);
+                        }
+                    } else {
+                        curr_cowboy->reload();
+                    }
                 }
-                if (!curr_victim->isAlive()) {
-                    curr_victim = chooseVictim(enemy_team);
-                }
-                if (curr_victim != nullptr) {
-                    curr_member->attack(curr_victim);
+            } else if (curr_member->isAlive() && curr_victim->isAlive()) {
+                if (auto *curr_ninja = dynamic_cast<Ninja *>(curr_member)) {
+                    if (curr_ninja->distance(curr_victim) <= 1) {
+                        curr_ninja->slash(curr_victim);
+                        if (!curr_victim->isAlive()) {
+                            curr_victim = chooseVictim(enemy_team);
+                        }
+                    } else {
+                        curr_ninja->move(curr_victim);
+                    }
                 }
             }
         }

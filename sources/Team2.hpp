@@ -10,7 +10,8 @@ namespace ariel {
      * Iteration order: FIFO (without distinguishing between cowboys and ninjas)
      */
     class Team2 : public Team {
-    private:
+    protected:
+        void attack_victim(Character *curr_victim, Team *enemy_team) override;
 
     public:
 

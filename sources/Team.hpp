@@ -47,7 +47,7 @@ namespace ariel {
          */
         virtual Character *chooseVictim(Team *enemy_team);
 
-//        virtual void addMemberAt(Character *new_member, int i_plus);
+        virtual void attack_victim(Character *curr_victim, Team *enemy_team);
 
     public:
 

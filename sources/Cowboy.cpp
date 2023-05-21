@@ -63,12 +63,12 @@ namespace ariel {
         return *this;
     }
 
-    void Cowboy::attack(Character *enemy) {
-        if (this->hasboolets()) {
-            shoot(enemy);
-        } else {
-            reload();
-        }
-    }
+//    void Cowboy::attack(Character *enemy) {
+//        if (this->hasboolets()) {
+//            shoot(enemy);
+//        } else {
+//            reload();
+//        }
+//    }
 
 }

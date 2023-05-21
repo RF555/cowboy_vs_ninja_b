@@ -61,7 +61,7 @@ namespace ariel {
 
         ostream &toPrint(ostream &output) override;
 
-        void attack(Character *enemy) override;
+//        void attack(Character *enemy) override;
     };
 
 }
