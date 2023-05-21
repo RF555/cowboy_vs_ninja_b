@@ -17,7 +17,7 @@ namespace ariel {
 
     Point::Point(Point &&_other) noexcept {}
 
-    Point::~Point() {}
+    Point::~Point() = default;
 
     double Point::distance(const Point &_point2) const {
         return sqrt((this->getX() - _point2.getX()) * (this->getX() - _point2.getX()) +

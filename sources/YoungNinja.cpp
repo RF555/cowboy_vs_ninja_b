@@ -12,7 +12,7 @@ namespace ariel {
 
     YoungNinja::YoungNinja(YoungNinja &&_other) noexcept {}
 
-    YoungNinja::~YoungNinja() {}
+    YoungNinja::~YoungNinja() = default;
 
     YoungNinja &YoungNinja::operator=(const YoungNinja &_other) {
         return *this;

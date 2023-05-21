@@ -31,7 +31,7 @@ namespace ariel {
 
     Character::Character(Character &&_other) noexcept {}
 
-    Character::~Character() {}
+    Character::~Character() = default;
 
     Character &Character::operator=(const Character &_other) { return *this; }
 
@@ -44,7 +44,7 @@ namespace ariel {
 
     bool Character::isAlive() { return this->getLives() > 0; }
 
-    double Character::distance(Character *_other) {
+    double Character::distance(Character *_other) const {
         return this->getLocation().distance(_other->getLocation());
     }
 

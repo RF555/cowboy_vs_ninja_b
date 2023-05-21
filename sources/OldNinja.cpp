@@ -12,7 +12,7 @@ namespace ariel {
 
     OldNinja::OldNinja(OldNinja &&_other) noexcept {}
 
-    OldNinja::~OldNinja() {}
+    OldNinja::~OldNinja() = default;
 
     OldNinja &OldNinja::operator=(const OldNinja &_other) {
         return *this;

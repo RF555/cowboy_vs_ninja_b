@@ -8,10 +8,20 @@ namespace ariel {
      * Iteration order: ???
      */
     class SmartTeam : public Team {
+
+    protected:
+        void attack_victim(Character *curr_victim, Team *enemy_team) override;
+
     public:
+
         SmartTeam();
 
-        SmartTeam(Character &leader);
+        /**
+         * @param leader A pointer to the leader
+         * @throws std::runtime_error If the pointer is nullptr.
+         * @throws std::runtime_error If the leader already has a team.
+         */
+        explicit SmartTeam(Character *leader);
 
         SmartTeam(SmartTeam const &_other);
 

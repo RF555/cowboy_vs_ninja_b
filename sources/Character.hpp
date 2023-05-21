@@ -72,7 +72,7 @@ namespace ariel {
          * @param _other Reference to another character.
          * @return Distance between the 2 characters.
          */
-        double distance(Character *_other);
+        double distance(Character *_other) const;
 
         /**
          * @brief Reduces the character's lives by the number of hits.

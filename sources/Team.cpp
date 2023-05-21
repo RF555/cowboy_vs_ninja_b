@@ -67,40 +67,10 @@ namespace ariel {
         } else {
             return;
         }
-
-//        /* first loop for Cowboys */
-//        for (auto curr_member: this->_members) {
-//            if (curr_member->isAlive() && curr_member->getMyType() == COWBOY) {
-//                if (!this->_leader->isAlive()) {
-//                    chooseNewLeader();
-//                    curr_victim = chooseVictim(enemy_team);
-//                }
-//                if (!curr_victim->isAlive()) {
-//                    curr_victim = chooseVictim(enemy_team);
-//                }
-//                if (curr_victim != nullptr) {
-//                    curr_member->attack(curr_victim);
-//                }
-//            }
-//        }
-//        /* second loop for Ninjas */
-//        for (auto curr_member: this->_members) {
-//            if (curr_member->isAlive() && curr_member->getMyType() == NINJA) {
-//                if (!this->_leader->isAlive()) {
-//                    chooseNewLeader();
-//                    curr_victim = chooseVictim(enemy_team);
-//                }
-//                if (!curr_victim->isAlive()) {
-//                    curr_victim = chooseVictim(enemy_team);
-//                }
-//                if (curr_victim != nullptr) {
-//                    curr_member->attack(curr_victim);
-//                }
-//            }
-//        }
     }
 
     void Team::attack_victim(Character *curr_victim, Team *enemy_team) {
+
         /* first loop for Cowboys */
         for (auto curr_member: this->_members) {
             if (curr_member == nullptr || curr_victim == nullptr) { return; }
@@ -118,6 +88,7 @@ namespace ariel {
                 }
             }
         }
+
         /* second loop for Ninjas */
         for (auto curr_member: this->_members) {
             if (curr_member == nullptr || curr_victim == nullptr) { return; }
@@ -234,6 +205,10 @@ namespace ariel {
             output << member->print() << "\n";
         }
         return output;
+    }
+
+    const vector<Character *> &Team::getMembers() const {
+        return _members;
     }
 
 

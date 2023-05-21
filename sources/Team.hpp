@@ -125,6 +125,7 @@ namespace ariel {
 
         virtual std::ostream &toPrint(ostream &output);
 
+        const vector<Character *> &getMembers() const;
     };
 
 }

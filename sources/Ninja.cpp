@@ -18,7 +18,7 @@ namespace ariel {
 
     Ninja::Ninja(Ninja &&_other) noexcept {}
 
-    Ninja::~Ninja() {};
+    Ninja::~Ninja() = default;
 
     ostream &Ninja::toPrint(ostream &output) {
         if (isAlive()) {
@@ -48,7 +48,6 @@ namespace ariel {
         }
         if (this->isAlive() && enemy->isAlive()) {
             if (this->distance(enemy) <= 1.0) {
-//                cout << this->getName() << " slashed " << enemy->getName() << endl;
                 enemy->hit(40);
             }
         } else if (this->isAlive()) {
@@ -63,7 +62,6 @@ namespace ariel {
             throw std::runtime_error("RUNTIME ERROR: Dead Ninja can not move!\n");
         }
         Point temp = Point::moveTowards(this->getLocation(), enemy->getLocation(), this->getSpeed());
-//        cout << this->getName() << " moved to: " << temp.print() << endl;
         this->setLocation(temp);
     }
 

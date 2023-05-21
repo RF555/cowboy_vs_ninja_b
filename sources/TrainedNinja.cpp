@@ -12,7 +12,7 @@ namespace ariel {
 
     TrainedNinja::TrainedNinja(TrainedNinja &&_other) noexcept {}
 
-    TrainedNinja::~TrainedNinja() {}
+    TrainedNinja::~TrainedNinja() = default;
 
     TrainedNinja &TrainedNinja::operator=(const TrainedNinja &_other) {
         return *this;
