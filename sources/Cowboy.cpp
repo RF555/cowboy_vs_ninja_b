@@ -35,8 +35,7 @@ namespace ariel {
                 enemy->hit(10);
                 --this->n_bullets;
             }
-        }
-        if (this->isAlive()) {
+        } else if (!this->isAlive()) {
             throw std::runtime_error("RUNTIME ERROR: Dead Cowboy can not attack!\n");
         } else {
             throw std::runtime_error("RUNTIME ERROR: Cowboy can not attack a dead Character!\n");
