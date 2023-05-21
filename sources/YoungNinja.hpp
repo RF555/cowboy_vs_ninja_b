@@ -15,7 +15,7 @@ namespace ariel {
          * @param point Point as the location of the Character.
          * @details YoungNinja is constructed with 14 bullets and 100 lives.
          */
-        YoungNinja(const string &name, Point point);
+        YoungNinja(string name, const Point &point);
 
         YoungNinja(YoungNinja const &_other);
 
