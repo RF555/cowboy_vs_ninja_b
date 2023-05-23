@@ -10,7 +10,7 @@ namespace ariel {
     class SmartTeam : public Team {
 
     protected:
-        Character *smartChooseVictim(Team *enemy_team, Character *attacker);
+        static Character *smartChooseVictim(Team *enemy_team, Character *attacker);
 
         void attack_victim(Character *curr_victim, Team *enemy_team) override;
 

@@ -22,7 +22,7 @@ namespace ariel {
         if (isAlive()) {
             return output << "C " << this->getName() << ", " << this->getLives() << ", " << this->getLocation();
         } else {
-            return output << "C " << "(" << this->getName() << "), " << ", " << this->getLocation();
+            return output << "C " << "(" << this->getName() << "), " << this->getLocation();
         }
     }
 
