@@ -29,4 +29,11 @@ namespace ariel {
     void SmartTeam::attack_victim(Character *curr_victim, Team *enemy_team) {
         Team::attack_victim(curr_victim, enemy_team);
     }
+
+    Character *SmartTeam::smartChooseVictim(Team *enemy_team, Character *attacker) {
+        if(attacker)
+        return nullptr;
+    }
+
+
 }
