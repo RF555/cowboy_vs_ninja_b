@@ -50,14 +50,14 @@ namespace ariel {
 
         Character(Character const &_other);
 
-        Character(Character &&_other) noexcept;
+        Character(Character &&_other);
 
         virtual ~Character();
 
 
         Character &operator=(const Character &_other);
 
-        Character &operator=(Character &&_other) noexcept;
+        Character &operator=(Character &&_other);
 
         bool operator==(Character &_other);
 

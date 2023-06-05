@@ -29,13 +29,13 @@ namespace ariel {
             _name(_other._name),
             team_member(_other.team_member) {}
 
-    Character::Character(Character &&_other) noexcept {}
+    Character::Character(Character &&_other) {}
 
     Character::~Character() = default;
 
     Character &Character::operator=(const Character &_other) { return *this; }
 
-    Character &Character::operator=(Character &&_other) noexcept {
+    Character &Character::operator=(Character &&_other) {
         this->_lives = _other.getLives();
         this->_name = _other.getName();
         this->_location = _other.getLocation();
